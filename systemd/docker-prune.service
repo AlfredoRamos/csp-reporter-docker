@@ -1,0 +1,14 @@
+[Unit]
+Description=Prune unused Docker objects
+Requires=docker.service
+After=syslog.target network.target docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/docker system prune -f --filter "until=24h"
+TimeoutSec=10m
+Restart=on-failure
+RestartSec=60s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: [master, dev]
+  pull_request: {}
+
+jobs:
+  security:
+    if: ${{ !contains(github.event.head_commit.message, 'skip security') }}
+    name: Security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Scan Alpine Linux image
+        continue-on-error: true
+        if: ${{ !cancelled() }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'image'
+          scanners: 'vuln,misconfig,secret'
+          image-ref: 'alpine:3.20'
+          trivy-config: 'trivy.yaml'
+
+      - name: Scan Go image
+        continue-on-error: true
+        if: ${{ !cancelled() }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'image'
+          scanners: 'vuln,misconfig,secret'
+          image-ref: 'golang:1.23.0-alpine'
+          trivy-config: 'trivy.yaml'
+
+      - name: Scan Node image
+        continue-on-error: true
+        if: ${{ !cancelled() }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'image'
+          scanners: 'vuln,misconfig,secret'
+          image-ref: 'node:22.7.0-alpine'
+          trivy-config: 'trivy.yaml'
+
+      - name: Scan PostgreSQL image
+        continue-on-error: true
+        if: ${{ !cancelled() }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'image'
+          scanners: 'vuln,misconfig,secret'
+          image-ref: 'postgres:16-alpine'
+          trivy-config: 'trivy.yaml'
+
+      - name: Scan Redis image
+        continue-on-error: true
+        if: ${{ !cancelled() }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'image'
+          scanners: 'vuln,misconfig,secret'
+          image-ref: 'redis:7-alpine'
+          trivy-config: 'trivy.yaml'
+
+      - name: Scan Nginx image
+        continue-on-error: true
+        if: ${{ !cancelled() }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'image'
+          scanners: 'vuln,misconfig,secret'
+          image-ref: 'nginx:mainline-alpine'
+          trivy-config: 'trivy.yaml'
+
+      - name: Scan filesystem
+        continue-on-error: true
+        if: ${{ !cancelled() }}
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scanners: 'vuln,misconfig,secret'
+          scan-ref: '.'
+          trivy-config: 'trivy.yaml'
