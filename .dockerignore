@@ -1,0 +1,39 @@
+# Common
+**/.vscode
+**/.git*
+**/.editorconfig
+**/*.md
+**/*.env*
+**/*.sql*
+**/*.pem
+**/*.key
+**/*.pub
+**/*.crt
+**/*.cer
+**/*.cert
+
+# Server
+**/systemd
+**/trivy.yaml
+
+# Backend
+**/keys
+**/tmp
+**/.golangci.yml
+**/.air*.toml
+
+# Frontend
+**/node_modules
+**/dist
+**/.prettierrc.json
+**/.eslintrc.cjs
+**/.tool-versions
+
+# Exceptions
+!backend/.env
+!backend/keys/signing-private.json
+!backend/keys/signing-public.json
+!backend/keys/signing-encryption.json
+!backend/keys/signing-encryption.json
+!frontend/.env
+!docker/nginx/dhparam.pem

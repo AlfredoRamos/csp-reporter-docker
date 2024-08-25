@@ -1,0 +1,12 @@
+**/.vscode/*
+!.vscode/*.json
+**/keys/*
+**/*.pem
+**/*.key
+**/*.pub
+**/*.crt
+**/*.cer
+**/*.cert
+!docker/nginx/dhparam.pem
+**/*.env*
+!**/.env.example
