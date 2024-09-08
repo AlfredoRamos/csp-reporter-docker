@@ -31,7 +31,7 @@ jobs:
         with:
           scan-type: 'image'
           scanners: 'vuln,misconfig,secret'
-          image-ref: 'golang:1.23.0-alpine'
+          image-ref: 'golang:1.23.1-alpine'
           trivy-config: 'trivy.yaml'
 
       - name: Scan Node image
