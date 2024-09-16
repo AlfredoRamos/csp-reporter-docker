@@ -42,7 +42,7 @@ sudo systemctl enable --now docker-prune.timer
 ### Clone with submodules
 
 ```shell
-git clone -b master --recurse-submodules --remote-submodules -j 10 -- git@github.com:AlfredoRamos/csp-reporter-docker.git
+git clone -b master --recurse-submodules --remote-submodules -j 10 -- https://github.com/AlfredoRamos/csp-reporter-docker.git
 ```
 
 ### Initialize
@@ -54,8 +54,8 @@ git submodule init
 ### Add
 
 ```shell
-git submodule add -b master -- git@github.com:AlfredoRamos/csp-reporter-backend.git backend
-git submodule add -b master -- git@github.com:AlfredoRamos/csp-reporter-frontend.git frontend
+git submodule add -b master -- https://github.com/AlfredoRamos/csp-reporter-backend.git backend
+git submodule add -b master -- https://github.com/AlfredoRamos/csp-reporter-frontend.git frontend
 ```
 
 ### Update
