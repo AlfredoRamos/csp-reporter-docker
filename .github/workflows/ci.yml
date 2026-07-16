@@ -35,7 +35,7 @@ jobs:
           sed -ri 's/^(VITE_HCAPTCHA_SITE_KEY=)/\110000000-ffff-ffff-ffff-000000000001/' frontend/.env
 
       - name: Setup Go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
           go-version: 'stable'
 
